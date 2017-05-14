@@ -45,6 +45,10 @@ module Wowza
         end
       end
 
+      def destroy
+        resp = conn.delete href
+      end
+      
       def instances
         Instances.new(conn, self)
       end
