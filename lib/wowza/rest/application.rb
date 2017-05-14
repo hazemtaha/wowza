@@ -5,7 +5,7 @@ module Wowza
       include Assignment::Attributes
 
       attr_accessor :id, :href, :app_type, :dvr_enabled, :drm_enabled,
-        :transcoder_enabled, :stream_targets_enabled,
+        :transcoder_enabled, :stream_targets_enabled, 
         :server_name, :vhost_name, :conn
 
       def initialize(attributes={})
@@ -23,6 +23,24 @@ module Wowza
           transcoder_enabled: transcoder_enabled,
           stream_targets_enabled: stream_targets_enabled,
         }
+      end
+
+      def to_json
+        {
+          id: id,
+          href: href,
+          appType: app_type,
+          dvrEnabled: dvr_enabled,
+          drmEnabled: drm_enabled,
+          transcoderEnabled: transcoder_enabled,
+          streamTargetsEnabled: stream_targets_enabled,
+        }.to_json
+      end
+
+      def create
+        resp = conn.send(:post, href) do |req|
+          req.body = to_json
+        end
       end
 
       def instances
