@@ -5,7 +5,7 @@ module Wowza
       include Assignment::Attributes
 
       attr_accessor :id, :href, :app_type, :dvr_enabled, :drm_enabled,
-        :transcoder_enabled, :stream_targets_enabled, 
+        :transcoder_enabled, :stream_targets_enabled, :http_cors_enabled
         :server_name, :vhost_name, :conn
 
       def initialize(attributes={})
@@ -22,6 +22,7 @@ module Wowza
           drm_enabled: drm_enabled,
           transcoder_enabled: transcoder_enabled,
           stream_targets_enabled: stream_targets_enabled,
+          http_cors_enabled: http_cors_enabled,
         }
       end
 
@@ -34,6 +35,7 @@ module Wowza
           drmEnabled: drm_enabled,
           transcoderEnabled: transcoder_enabled,
           streamTargetsEnabled: stream_targets_enabled,
+          httpCORSHeadersEnabled: http_cors_enabled,
         }.to_json
       end
 

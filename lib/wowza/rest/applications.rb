@@ -17,6 +17,7 @@ module Wowza
             drm_enabled: attrs["drmEnabled"],
             transcoder_enabled: attrs["transcoderEnabled"],
             stream_targets_enabled: attrs["streamTargetsEnabled"],
+            http_cors_enabled: attrs["httpCORSHeadersEnabled"],
           }).tap do |app|
             app.conn = conn
           end
