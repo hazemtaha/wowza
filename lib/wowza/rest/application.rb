@@ -5,7 +5,7 @@ module Wowza
       include Assignment::Attributes
 
       attr_accessor :id, :href, :app_type, :dvr_enabled, :drm_enabled,
-        :transcoder_enabled, :stream_targets_enabled, :http_cors_enabled
+        :transcoder_enabled, :stream_targets_enabled, :http_cors_enabled,
         :server_name, :vhost_name, :conn
 
       def initialize(attributes={})
@@ -48,7 +48,7 @@ module Wowza
       def destroy
         resp = conn.delete href
       end
-      
+
       def instances
         Instances.new(conn, self)
       end
