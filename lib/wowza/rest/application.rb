@@ -36,6 +36,12 @@ module Wowza
           transcoderEnabled: transcoder_enabled,
           streamTargetsEnabled: stream_targets_enabled,
           httpCORSHeadersEnabled: http_cors_enabled,
+          # temp default securityConfig obj to allow remote streaming  
+          securityConfig: {
+            "clientStreamWriteAccess": "*",
+            "publishRequirePassword": true,
+            "publishAuthenticationMethod": "digest",
+          }
         }.to_json
       end
 
